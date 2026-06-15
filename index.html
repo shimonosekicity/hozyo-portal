@@ -345,14 +345,21 @@
       const iframeScreen = document.getElementById('iframe-screen');
       iframeScreen.classList.add('active');
       document.getElementById('iframe-title').textContent = page.title;
-      document.getElementById('main-iframe').src = page.url;
+
+      // 毎回新しいiframeを生成して初期状態から読み込む
+      const old = document.getElementById('main-iframe');
+      const fresh = document.createElement('iframe');
+      fresh.id = 'main-iframe';
+      fresh.title = 'コンテンツ表示エリア';
+      fresh.src = page.url;
+      old.parentNode.replaceChild(fresh, old);
+
       document.querySelector('header').classList.add('compact');
     }
 
     function goBack() {
       document.getElementById('iframe-screen').classList.remove('active');
       document.getElementById('top-screen').style.display = 'flex';
-      document.getElementById('main-iframe').src = '';
       document.querySelector('header').classList.remove('compact');
     }
   </script>
