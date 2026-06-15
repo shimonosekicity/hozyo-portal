@@ -37,6 +37,12 @@
       align-items: center;
       gap: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: padding 0.25s, gap 0.25s;
+    }
+
+    header.compact {
+      padding: 8px 16px;
+      gap: 8px;
     }
 
     header .logo-mark {
@@ -48,6 +54,12 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      transition: width 0.25s, height 0.25s;
+    }
+
+    header.compact .logo-mark {
+      width: 24px;
+      height: 24px;
     }
 
     header .logo-mark span {
@@ -55,6 +67,11 @@
       font-weight: 900;
       color: var(--navy);
       line-height: 1;
+      transition: font-size 0.25s;
+    }
+
+    header.compact .logo-mark span {
+      font-size: 12px;
     }
 
     header h1 {
@@ -62,6 +79,11 @@
       font-weight: 700;
       letter-spacing: 0.05em;
       line-height: 1.3;
+      transition: font-size 0.25s;
+    }
+
+    header.compact h1 {
+      font-size: 0.85rem;
     }
 
     header h1 small {
@@ -70,6 +92,12 @@
       font-weight: 400;
       opacity: 0.85;
       letter-spacing: 0.08em;
+      transition: font-size 0.25s, opacity 0.25s;
+    }
+
+    header.compact h1 small {
+      font-size: 0;
+      opacity: 0;
     }
 
     /* トップ画面 */
@@ -318,12 +346,14 @@
       iframeScreen.classList.add('active');
       document.getElementById('iframe-title').textContent = page.title;
       document.getElementById('main-iframe').src = page.url;
+      document.querySelector('header').classList.add('compact');
     }
 
     function goBack() {
       document.getElementById('iframe-screen').classList.remove('active');
       document.getElementById('top-screen').style.display = 'flex';
       document.getElementById('main-iframe').src = '';
+      document.querySelector('header').classList.remove('compact');
     }
   </script>
 
